@@ -1,0 +1,47 @@
+.App {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transition: margin-right 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.main-content.shifted {
+  margin-right: 320px;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.shopping-tab {
+  position: fixed;
+  top: 80px;
+  right: 0;
+  height: calc(100% - 80px);
+  width: 320px;
+  background-color: rgb(245, 245, 245);
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.shopping-tab.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
