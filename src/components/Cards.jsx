@@ -6,7 +6,7 @@ export default function Cards({cart,setCart, openCart}) {
   const [products, setProducts] = useState([])
   useEffect(() => {
     async function fetchFunc() {
-      const res = await fetch('https://dummyjson.com/products');
+      const res = await fetch('https://dummyjson.com/products?');
       const data = await res.json();
       setProducts(data.products);
     }; 
