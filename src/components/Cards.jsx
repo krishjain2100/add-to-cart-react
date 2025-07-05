@@ -1,19 +1,45 @@
 import React, {useState, useEffect} from 'react'
 import Card from './Card'  
-import './styles/content.css'
+import CircularProgress from '@mui/material/CircularProgress';
+import '../styles/content.css'
 
-export default function Cards({cart,setCart, openCart}) {
-  const [products, setProducts] = useState([])
+export default function Cards({handleAddToCart}) {
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    async function fetchFunc() {
-      const res = await fetch('https://dummyjson.com/products?');
-      const data = await res.json();
-      setProducts(data.products);
+    async function fetchProducts() {
+      setIsLoading(true);
+      try {
+        const res = await fetch('https://dummyjson.com/products');
+        const data = await res.json();
+        setProducts(data.products);
+      } catch (error) {
+        setError("Unable to show contents");
+      } finally {
+        setIsLoading(false);
+      }
     }; 
-    fetchFunc();},[]);
-  return (
-    <div className="content">
-      {products.map(product => <Card key={product.id} id = {product.id} name={product.title} price={product.price} image={product.thumbnail} cart={cart} setCart={setCart} openCart = {openCart}/>)}
+    fetchProducts();
+  },[]);
+
+
+  return error ? (
+    <div className="error">{error}</div>
+  ) : isLoading ? (
+    <div className="loading">
+      <CircularProgress />
     </div>
-  )
+  ) : (
+    <div className="content">
+      {products.map(product => (
+        <Card
+          key={product.id}
+          product={product}
+          handleAddToCart={handleAddToCart}
+        />
+      ))}
+    </div>
+  );  
 }

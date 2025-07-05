@@ -59,4 +59,14 @@
   background-color: rgb(41, 128, 185);
 }
 
+.error {
+  text-align: center;
+  padding-top: 250px;
+  font-size: 30px;
+}
 
+.loading {
+  text-align: center;
+  padding-top: 250px;
+  font-size: 30px;
+}

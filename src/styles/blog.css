@@ -51,18 +51,15 @@
   font-weight: 600;
 }
 
-.home-title {
-  color: #ffffff;
-  font-size: 1.25rem;      
-  text-decoration: none;  
-  padding: 8px 16px;       
-  border-radius: 4px;      
-  transition: background-color 0.2s ease, color 0.2s ease;
+.error {
+  text-align: center;
+  padding-top: 250px;
+  font-size: 30px;
 }
 
-.home-title:hover {
-  background-color: rgba(255, 255, 255, 0.1); 
-  color: #dddddd;                             
-  cursor: pointer;
+.loading {
+  text-align: center;
+  padding-top: 250px;
+  font-size: 30px;
 }
 
